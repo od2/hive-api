@@ -7,13 +7,43 @@ import "google/protobuf/timestamp.proto";
 
 // Assignments streams task assignments to workers.
 service Management {
-  rpc CreateWorkerToken(CreateWorkerTokenRequest) returns (WorkerToken);
+  rpc CreateWorkerToken(CreateWorkerTokenRequest) returns (CreateWorkerTokenResponse);
+  rpc ListWorkerTokens(ListWorkerTokensRequest) returns (ListWorkerTokensResponse);
+  rpc RevokeWorkerToken(RevokeWorkerTokenRequest) returns (RevokeWorkerTokenResponse);
+  rpc RevokeAllWorkerTokens(RevokeAllWorkerTokensRequest) returns (RevokeAllWorkerTokensResponse);
 }
 
 message CreateWorkerTokenRequest {
-  google.protobuf.Timestamp expire_at = 1;
+  string description = 1;
+}
+
+message CreateWorkerTokenResponse {
+  string key = 1;
+  WorkerToken token = 2;
+}
+
+message ListWorkerTokensRequest {}
+
+message ListWorkerTokensResponse {
+  repeated WorkerToken tokens = 1;
 }
 
 message WorkerToken {
-  string token = 1;
+  string id = 1;
+  string description = 2;
+  string token_bit = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp last_used_at = 5;
 }
+
+message RevokeWorkerTokenRequest {
+  string token_id = 1;
+}
+
+message RevokeWorkerTokenResponse {
+  bool found = 1;
+}
+
+message RevokeAllWorkerTokensRequest {}
+
+message RevokeAllWorkerTokensResponse {}
