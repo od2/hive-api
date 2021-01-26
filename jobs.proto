@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package od2_network.hive_api;
-option go_package = "go.od2.network/hive-api";
+package od2_network.hive;
+option go_package = "go.od2.network/hive-api;hive";
 
 import "google/protobuf/timestamp.proto";
 import "items.proto";
