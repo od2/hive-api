@@ -1,0 +1,15 @@
+{
+  "name": "@od2/hive-api",
+  "version": "0.0.1",
+  "description": "Hive gRPC-Web definitions",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/od2/hive-api.git"
+  },
+  "author": "Richard Patel <me@terorie.dev>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/od2/hive-api/issues"
+  },
+  "homepage": "https://github.com/od2/hive-api#readme"
+}
