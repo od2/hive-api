@@ -17,7 +17,10 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ManagementClient interface {
-	CreateWorkerToken(ctx context.Context, in *CreateWorkerTokenRequest, opts ...grpc.CallOption) (*WorkerToken, error)
+	CreateWorkerToken(ctx context.Context, in *CreateWorkerTokenRequest, opts ...grpc.CallOption) (*CreateWorkerTokenResponse, error)
+	ListWorkerTokens(ctx context.Context, in *ListWorkerTokensRequest, opts ...grpc.CallOption) (*ListWorkerTokensResponse, error)
+	RevokeWorkerToken(ctx context.Context, in *RevokeWorkerTokenRequest, opts ...grpc.CallOption) (*RevokeWorkerTokenResponse, error)
+	RevokeAllWorkerTokens(ctx context.Context, in *RevokeAllWorkerTokensRequest, opts ...grpc.CallOption) (*RevokeAllWorkerTokensResponse, error)
 }
 
 type managementClient struct {
@@ -28,9 +31,36 @@ func NewManagementClient(cc grpc.ClientConnInterface) ManagementClient {
 	return &managementClient{cc}
 }
 
-func (c *managementClient) CreateWorkerToken(ctx context.Context, in *CreateWorkerTokenRequest, opts ...grpc.CallOption) (*WorkerToken, error) {
-	out := new(WorkerToken)
+func (c *managementClient) CreateWorkerToken(ctx context.Context, in *CreateWorkerTokenRequest, opts ...grpc.CallOption) (*CreateWorkerTokenResponse, error) {
+	out := new(CreateWorkerTokenResponse)
 	err := c.cc.Invoke(ctx, "/od2_network.hive.Management/CreateWorkerToken", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managementClient) ListWorkerTokens(ctx context.Context, in *ListWorkerTokensRequest, opts ...grpc.CallOption) (*ListWorkerTokensResponse, error) {
+	out := new(ListWorkerTokensResponse)
+	err := c.cc.Invoke(ctx, "/od2_network.hive.Management/ListWorkerTokens", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managementClient) RevokeWorkerToken(ctx context.Context, in *RevokeWorkerTokenRequest, opts ...grpc.CallOption) (*RevokeWorkerTokenResponse, error) {
+	out := new(RevokeWorkerTokenResponse)
+	err := c.cc.Invoke(ctx, "/od2_network.hive.Management/RevokeWorkerToken", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managementClient) RevokeAllWorkerTokens(ctx context.Context, in *RevokeAllWorkerTokensRequest, opts ...grpc.CallOption) (*RevokeAllWorkerTokensResponse, error) {
+	out := new(RevokeAllWorkerTokensResponse)
+	err := c.cc.Invoke(ctx, "/od2_network.hive.Management/RevokeAllWorkerTokens", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +71,10 @@ func (c *managementClient) CreateWorkerToken(ctx context.Context, in *CreateWork
 // All implementations must embed UnimplementedManagementServer
 // for forward compatibility
 type ManagementServer interface {
-	CreateWorkerToken(context.Context, *CreateWorkerTokenRequest) (*WorkerToken, error)
+	CreateWorkerToken(context.Context, *CreateWorkerTokenRequest) (*CreateWorkerTokenResponse, error)
+	ListWorkerTokens(context.Context, *ListWorkerTokensRequest) (*ListWorkerTokensResponse, error)
+	RevokeWorkerToken(context.Context, *RevokeWorkerTokenRequest) (*RevokeWorkerTokenResponse, error)
+	RevokeAllWorkerTokens(context.Context, *RevokeAllWorkerTokensRequest) (*RevokeAllWorkerTokensResponse, error)
 	mustEmbedUnimplementedManagementServer()
 }
 
@@ -49,8 +82,17 @@ type ManagementServer interface {
 type UnimplementedManagementServer struct {
 }
 
-func (UnimplementedManagementServer) CreateWorkerToken(context.Context, *CreateWorkerTokenRequest) (*WorkerToken, error) {
+func (UnimplementedManagementServer) CreateWorkerToken(context.Context, *CreateWorkerTokenRequest) (*CreateWorkerTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateWorkerToken not implemented")
+}
+func (UnimplementedManagementServer) ListWorkerTokens(context.Context, *ListWorkerTokensRequest) (*ListWorkerTokensResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListWorkerTokens not implemented")
+}
+func (UnimplementedManagementServer) RevokeWorkerToken(context.Context, *RevokeWorkerTokenRequest) (*RevokeWorkerTokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RevokeWorkerToken not implemented")
+}
+func (UnimplementedManagementServer) RevokeAllWorkerTokens(context.Context, *RevokeAllWorkerTokensRequest) (*RevokeAllWorkerTokensResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RevokeAllWorkerTokens not implemented")
 }
 func (UnimplementedManagementServer) mustEmbedUnimplementedManagementServer() {}
 
@@ -83,6 +125,60 @@ func _Management_CreateWorkerToken_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Management_ListWorkerTokens_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListWorkerTokensRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagementServer).ListWorkerTokens(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/od2_network.hive.Management/ListWorkerTokens",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagementServer).ListWorkerTokens(ctx, req.(*ListWorkerTokensRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Management_RevokeWorkerToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RevokeWorkerTokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagementServer).RevokeWorkerToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/od2_network.hive.Management/RevokeWorkerToken",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagementServer).RevokeWorkerToken(ctx, req.(*RevokeWorkerTokenRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Management_RevokeAllWorkerTokens_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RevokeAllWorkerTokensRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagementServer).RevokeAllWorkerTokens(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/od2_network.hive.Management/RevokeAllWorkerTokens",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagementServer).RevokeAllWorkerTokens(ctx, req.(*RevokeAllWorkerTokensRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Management_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "od2_network.hive.Management",
 	HandlerType: (*ManagementServer)(nil),
@@ -90,6 +186,18 @@ var _Management_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateWorkerToken",
 			Handler:    _Management_CreateWorkerToken_Handler,
+		},
+		{
+			MethodName: "ListWorkerTokens",
+			Handler:    _Management_ListWorkerTokens_Handler,
+		},
+		{
+			MethodName: "RevokeWorkerToken",
+			Handler:    _Management_RevokeWorkerToken_Handler,
+		},
+		{
+			MethodName: "RevokeAllWorkerTokens",
+			Handler:    _Management_RevokeAllWorkerTokens_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
