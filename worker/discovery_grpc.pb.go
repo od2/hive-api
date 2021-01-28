@@ -95,5 +95,5 @@ var _Discovery_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "discovery.proto",
+	Metadata: "worker/discovery.proto",
 }

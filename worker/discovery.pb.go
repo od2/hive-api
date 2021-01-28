@@ -2,11 +2,12 @@
 // versions:
 // 	protoc-gen-go v1.25.0-devel
 // 	protoc        v3.12.3
-// source: discovery.proto
+// source: worker/discovery.proto
 
 package worker
 
 import (
+	hive_api "go.od2.network/hive-api"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -25,13 +26,13 @@ type ReportDiscoveredRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Pointers []*ItemPointer `protobuf:"bytes,1,rep,name=pointers,proto3" json:"pointers,omitempty"`
+	Pointers []*hive_api.ItemPointer `protobuf:"bytes,1,rep,name=pointers,proto3" json:"pointers,omitempty"`
 }
 
 func (x *ReportDiscoveredRequest) Reset() {
 	*x = ReportDiscoveredRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_discovery_proto_msgTypes[0]
+		mi := &file_worker_discovery_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -44,7 +45,7 @@ func (x *ReportDiscoveredRequest) String() string {
 func (*ReportDiscoveredRequest) ProtoMessage() {}
 
 func (x *ReportDiscoveredRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_discovery_proto_msgTypes[0]
+	mi := &file_worker_discovery_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,10 +58,10 @@ func (x *ReportDiscoveredRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReportDiscoveredRequest.ProtoReflect.Descriptor instead.
 func (*ReportDiscoveredRequest) Descriptor() ([]byte, []int) {
-	return file_discovery_proto_rawDescGZIP(), []int{0}
+	return file_worker_discovery_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ReportDiscoveredRequest) GetPointers() []*ItemPointer {
+func (x *ReportDiscoveredRequest) GetPointers() []*hive_api.ItemPointer {
 	if x != nil {
 		return x.Pointers
 	}
@@ -76,7 +77,7 @@ type ReportDiscoveredResponse struct {
 func (x *ReportDiscoveredResponse) Reset() {
 	*x = ReportDiscoveredResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_discovery_proto_msgTypes[1]
+		mi := &file_worker_discovery_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -89,7 +90,7 @@ func (x *ReportDiscoveredResponse) String() string {
 func (*ReportDiscoveredResponse) ProtoMessage() {}
 
 func (x *ReportDiscoveredResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_discovery_proto_msgTypes[1]
+	mi := &file_worker_discovery_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -102,20 +103,20 @@ func (x *ReportDiscoveredResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReportDiscoveredResponse.ProtoReflect.Descriptor instead.
 func (*ReportDiscoveredResponse) Descriptor() ([]byte, []int) {
-	return file_discovery_proto_rawDescGZIP(), []int{1}
+	return file_worker_discovery_proto_rawDescGZIP(), []int{1}
 }
 
-var File_discovery_proto protoreflect.FileDescriptor
+var File_worker_discovery_proto protoreflect.FileDescriptor
 
-var file_discovery_proto_rawDesc = []byte{
-	0x0a, 0x0f, 0x64, 0x69, 0x73, 0x63, 0x6f, 0x76, 0x65, 0x72, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x12, 0x17, 0x6f, 0x64, 0x32, 0x5f, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2e, 0x68,
-	0x69, 0x76, 0x65, 0x2e, 0x77, 0x6f, 0x72, 0x6b, 0x65, 0x72, 0x1a, 0x0b, 0x69, 0x74, 0x65, 0x6d,
-	0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x5b, 0x0a, 0x17, 0x52, 0x65, 0x70, 0x6f, 0x72,
-	0x74, 0x44, 0x69, 0x73, 0x63, 0x6f, 0x76, 0x65, 0x72, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x12, 0x40, 0x0a, 0x08, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x73, 0x18, 0x01,
-	0x20, 0x03, 0x28, 0x0b, 0x32, 0x24, 0x2e, 0x6f, 0x64, 0x32, 0x5f, 0x6e, 0x65, 0x74, 0x77, 0x6f,
-	0x72, 0x6b, 0x2e, 0x68, 0x69, 0x76, 0x65, 0x2e, 0x77, 0x6f, 0x72, 0x6b, 0x65, 0x72, 0x2e, 0x49,
+var file_worker_discovery_proto_rawDesc = []byte{
+	0x0a, 0x16, 0x77, 0x6f, 0x72, 0x6b, 0x65, 0x72, 0x2f, 0x64, 0x69, 0x73, 0x63, 0x6f, 0x76, 0x65,
+	0x72, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x17, 0x6f, 0x64, 0x32, 0x5f, 0x6e, 0x65,
+	0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2e, 0x68, 0x69, 0x76, 0x65, 0x2e, 0x77, 0x6f, 0x72, 0x6b, 0x65,
+	0x72, 0x1a, 0x0b, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x54,
+	0x0a, 0x17, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x44, 0x69, 0x73, 0x63, 0x6f, 0x76, 0x65, 0x72,
+	0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x39, 0x0a, 0x08, 0x70, 0x6f, 0x69,
+	0x6e, 0x74, 0x65, 0x72, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x6f, 0x64,
+	0x32, 0x5f, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2e, 0x68, 0x69, 0x76, 0x65, 0x2e, 0x49,
 	0x74, 0x65, 0x6d, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x52, 0x08, 0x70, 0x6f, 0x69, 0x6e,
 	0x74, 0x65, 0x72, 0x73, 0x22, 0x1a, 0x0a, 0x18, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x44, 0x69,
 	0x73, 0x63, 0x6f, 0x76, 0x65, 0x72, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
@@ -134,25 +135,25 @@ var file_discovery_proto_rawDesc = []byte{
 }
 
 var (
-	file_discovery_proto_rawDescOnce sync.Once
-	file_discovery_proto_rawDescData = file_discovery_proto_rawDesc
+	file_worker_discovery_proto_rawDescOnce sync.Once
+	file_worker_discovery_proto_rawDescData = file_worker_discovery_proto_rawDesc
 )
 
-func file_discovery_proto_rawDescGZIP() []byte {
-	file_discovery_proto_rawDescOnce.Do(func() {
-		file_discovery_proto_rawDescData = protoimpl.X.CompressGZIP(file_discovery_proto_rawDescData)
+func file_worker_discovery_proto_rawDescGZIP() []byte {
+	file_worker_discovery_proto_rawDescOnce.Do(func() {
+		file_worker_discovery_proto_rawDescData = protoimpl.X.CompressGZIP(file_worker_discovery_proto_rawDescData)
 	})
-	return file_discovery_proto_rawDescData
+	return file_worker_discovery_proto_rawDescData
 }
 
-var file_discovery_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_discovery_proto_goTypes = []interface{}{
+var file_worker_discovery_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_worker_discovery_proto_goTypes = []interface{}{
 	(*ReportDiscoveredRequest)(nil),  // 0: od2_network.hive.worker.ReportDiscoveredRequest
 	(*ReportDiscoveredResponse)(nil), // 1: od2_network.hive.worker.ReportDiscoveredResponse
-	(*ItemPointer)(nil),              // 2: od2_network.hive.worker.ItemPointer
+	(*hive_api.ItemPointer)(nil),     // 2: od2_network.hive.ItemPointer
 }
-var file_discovery_proto_depIdxs = []int32{
-	2, // 0: od2_network.hive.worker.ReportDiscoveredRequest.pointers:type_name -> od2_network.hive.worker.ItemPointer
+var file_worker_discovery_proto_depIdxs = []int32{
+	2, // 0: od2_network.hive.worker.ReportDiscoveredRequest.pointers:type_name -> od2_network.hive.ItemPointer
 	0, // 1: od2_network.hive.worker.Discovery.ReportDiscovered:input_type -> od2_network.hive.worker.ReportDiscoveredRequest
 	1, // 2: od2_network.hive.worker.Discovery.ReportDiscovered:output_type -> od2_network.hive.worker.ReportDiscoveredResponse
 	2, // [2:3] is the sub-list for method output_type
@@ -162,14 +163,13 @@ var file_discovery_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_discovery_proto_init() }
-func file_discovery_proto_init() {
-	if File_discovery_proto != nil {
+func init() { file_worker_discovery_proto_init() }
+func file_worker_discovery_proto_init() {
+	if File_worker_discovery_proto != nil {
 		return
 	}
-	file_items_proto_init()
 	if !protoimpl.UnsafeEnabled {
-		file_discovery_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_worker_discovery_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ReportDiscoveredRequest); i {
 			case 0:
 				return &v.state
@@ -181,7 +181,7 @@ func file_discovery_proto_init() {
 				return nil
 			}
 		}
-		file_discovery_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_worker_discovery_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ReportDiscoveredResponse); i {
 			case 0:
 				return &v.state
@@ -198,18 +198,18 @@ func file_discovery_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_discovery_proto_rawDesc,
+			RawDescriptor: file_worker_discovery_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_discovery_proto_goTypes,
-		DependencyIndexes: file_discovery_proto_depIdxs,
-		MessageInfos:      file_discovery_proto_msgTypes,
+		GoTypes:           file_worker_discovery_proto_goTypes,
+		DependencyIndexes: file_worker_discovery_proto_depIdxs,
+		MessageInfos:      file_worker_discovery_proto_msgTypes,
 	}.Build()
-	File_discovery_proto = out.File
-	file_discovery_proto_rawDesc = nil
-	file_discovery_proto_goTypes = nil
-	file_discovery_proto_depIdxs = nil
+	File_worker_discovery_proto = out.File
+	file_worker_discovery_proto_rawDesc = nil
+	file_worker_discovery_proto_goTypes = nil
+	file_worker_discovery_proto_depIdxs = nil
 }

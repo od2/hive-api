@@ -1,4 +1,4 @@
-// source: topology.proto
+// source: web/topology.proto
 /**
  * @fileoverview
  * @enhanceable

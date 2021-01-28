@@ -1,4 +1,4 @@
-// source: worker_tokens.proto
+// source: web/worker_tokens.proto
 /**
  * @fileoverview
  * @enhanceable

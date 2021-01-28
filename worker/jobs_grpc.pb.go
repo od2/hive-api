@@ -355,5 +355,5 @@ var _Assignments_serviceDesc = grpc.ServiceDesc{
 			ServerStreams: true,
 		},
 	},
-	Metadata: "jobs.proto",
+	Metadata: "worker/jobs.proto",
 }

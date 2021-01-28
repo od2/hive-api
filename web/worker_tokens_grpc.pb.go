@@ -201,5 +201,5 @@ var _WorkerTokens_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "worker_tokens.proto",
+	Metadata: "web/worker_tokens.proto",
 }

@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package od2_network.hive;
+option go_package = "go.od2.network/hive-api;hive";
+
+import "google/protobuf/timestamp.proto";
+
+// ItemLocator identifies an item in a collection by ID.
+message ItemLocator {
+  string collection = 1;
+  string id = 2;
+}
+
+message ItemPointer {
+  ItemLocator dst = 1;
+  google.protobuf.Timestamp timestamp = 2;
+}
+
+enum TaskStatus {
+  SUCCESS = 0;
+  CLIENT_FAILURE = 1;
+  TIMEOUT = 2;
+}
+
+message KafkaPointer {
+  int32 partition = 1;
+  int64 offset = 2;
+}
+
+// Assignment instructs the client to fetch an item.
+message Assignment {
+  ItemLocator locator = 1;
+  KafkaPointer kafka_pointer = 2;
+}
+
+message AssignmentReport {
+  KafkaPointer kafka_pointer = 1;
+  TaskStatus status = 2;
+}
+
+message AssignmentResult {
+  int64 worker_id = 1;
+  AssignmentReport report = 2;
+  google.protobuf.Timestamp finish_time = 3;
+  ItemLocator locator = 4;
+}

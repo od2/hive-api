@@ -1,9 +1,7 @@
 // Package worker defines Protobuf types and gRPC interfaces for the worker API.
-package worker
+package hive
 
 import "fmt"
-
-//go:generate ./generate.sh
 
 // Check verifies all required fields are set.
 func (m *ItemPointer) Check() error {

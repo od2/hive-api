@@ -93,5 +93,5 @@ var _Topology_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "topology.proto",
+	Metadata: "web/topology.proto",
 }
