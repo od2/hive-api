@@ -1,5 +1,5 @@
-// Package hive defines Protobuf types and gRPC interfaces.
-package hive
+// Package worker defines Protobuf types and gRPC interfaces for the worker API.
+package worker
 
 import "fmt"
 

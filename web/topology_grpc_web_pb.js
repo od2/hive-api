@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for od2_network.hive
+ * @fileoverview gRPC-Web generated client stub for od2_network.hive.web
  * @enhanceable
  * @public
  */
@@ -15,11 +15,10 @@
 const grpc = {};
 grpc.web = require('grpc-web');
 
-
-var items_pb = require('./items_pb.js')
 const proto = {};
 proto.od2_network = {};
-proto.od2_network.hive = require('./discovery_pb.js');
+proto.od2_network.hive = {};
+proto.od2_network.hive.web = require('./topology_pb.js');
 
 /**
  * @param {string} hostname
@@ -29,7 +28,7 @@ proto.od2_network.hive = require('./discovery_pb.js');
  * @struct
  * @final
  */
-proto.od2_network.hive.DiscoveryClient =
+proto.od2_network.hive.web.TopologyClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -55,7 +54,7 @@ proto.od2_network.hive.DiscoveryClient =
  * @struct
  * @final
  */
-proto.od2_network.hive.DiscoveryPromiseClient =
+proto.od2_network.hive.web.TopologyPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -76,82 +75,82 @@ proto.od2_network.hive.DiscoveryPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.od2_network.hive.ReportDiscoveredRequest,
- *   !proto.od2_network.hive.ReportDiscoveredResponse>}
+ *   !proto.od2_network.hive.web.GetCollectionsRequest,
+ *   !proto.od2_network.hive.web.GetCollectionsResponse>}
  */
-const methodDescriptor_Discovery_ReportDiscovered = new grpc.web.MethodDescriptor(
-  '/od2_network.hive.Discovery/ReportDiscovered',
+const methodDescriptor_Topology_GetCollections = new grpc.web.MethodDescriptor(
+  '/od2_network.hive.web.Topology/GetCollections',
   grpc.web.MethodType.UNARY,
-  proto.od2_network.hive.ReportDiscoveredRequest,
-  proto.od2_network.hive.ReportDiscoveredResponse,
+  proto.od2_network.hive.web.GetCollectionsRequest,
+  proto.od2_network.hive.web.GetCollectionsResponse,
   /**
-   * @param {!proto.od2_network.hive.ReportDiscoveredRequest} request
+   * @param {!proto.od2_network.hive.web.GetCollectionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.od2_network.hive.ReportDiscoveredResponse.deserializeBinary
+  proto.od2_network.hive.web.GetCollectionsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.od2_network.hive.ReportDiscoveredRequest,
- *   !proto.od2_network.hive.ReportDiscoveredResponse>}
+ *   !proto.od2_network.hive.web.GetCollectionsRequest,
+ *   !proto.od2_network.hive.web.GetCollectionsResponse>}
  */
-const methodInfo_Discovery_ReportDiscovered = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.od2_network.hive.ReportDiscoveredResponse,
+const methodInfo_Topology_GetCollections = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.od2_network.hive.web.GetCollectionsResponse,
   /**
-   * @param {!proto.od2_network.hive.ReportDiscoveredRequest} request
+   * @param {!proto.od2_network.hive.web.GetCollectionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.od2_network.hive.ReportDiscoveredResponse.deserializeBinary
+  proto.od2_network.hive.web.GetCollectionsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.od2_network.hive.ReportDiscoveredRequest} request The
+ * @param {!proto.od2_network.hive.web.GetCollectionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.od2_network.hive.ReportDiscoveredResponse)}
+ * @param {function(?grpc.web.Error, ?proto.od2_network.hive.web.GetCollectionsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.od2_network.hive.ReportDiscoveredResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.od2_network.hive.web.GetCollectionsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.od2_network.hive.DiscoveryClient.prototype.reportDiscovered =
+proto.od2_network.hive.web.TopologyClient.prototype.getCollections =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/od2_network.hive.Discovery/ReportDiscovered',
+      '/od2_network.hive.web.Topology/GetCollections',
       request,
       metadata || {},
-      methodDescriptor_Discovery_ReportDiscovered,
+      methodDescriptor_Topology_GetCollections,
       callback);
 };
 
 
 /**
- * @param {!proto.od2_network.hive.ReportDiscoveredRequest} request The
+ * @param {!proto.od2_network.hive.web.GetCollectionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.od2_network.hive.ReportDiscoveredResponse>}
+ * @return {!Promise<!proto.od2_network.hive.web.GetCollectionsResponse>}
  *     Promise that resolves to the response
  */
-proto.od2_network.hive.DiscoveryPromiseClient.prototype.reportDiscovered =
+proto.od2_network.hive.web.TopologyPromiseClient.prototype.getCollections =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/od2_network.hive.Discovery/ReportDiscovered',
+      '/od2_network.hive.web.Topology/GetCollections',
       request,
       metadata || {},
-      methodDescriptor_Discovery_ReportDiscovered);
+      methodDescriptor_Topology_GetCollections);
 };
 
 
-module.exports = proto.od2_network.hive;
+module.exports = proto.od2_network.hive.web;
 

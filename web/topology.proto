@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package od2_network.hive.web;
+option go_package = "go.od2.network/hive-api/web";
+
+service Topology {
+  rpc GetCollections(GetCollectionsRequest) returns (GetCollectionsResponse);
+}
+
+message GetCollectionsRequest {}
+
+message GetCollectionsResponse {
+  repeated Collection collections = 1;
+}
+
+message Collection {
+  string name = 1;
+  int64 item_count = 2;
+}

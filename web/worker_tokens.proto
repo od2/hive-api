@@ -1,12 +1,11 @@
 syntax = "proto3";
 
-package od2_network.hive;
-option go_package = "go.od2.network/hive-api;hive";
+package od2_network.hive.web;
+option go_package = "go.od2.network/hive-api/web";
 
 import "google/protobuf/timestamp.proto";
 
-// Assignments streams task assignments to workers.
-service Management {
+service WorkerTokens {
   rpc CreateWorkerToken(CreateWorkerTokenRequest) returns (CreateWorkerTokenResponse);
   rpc ListWorkerTokens(ListWorkerTokensRequest) returns (ListWorkerTokensResponse);
   rpc RevokeWorkerToken(RevokeWorkerTokenRequest) returns (RevokeWorkerTokenResponse);
