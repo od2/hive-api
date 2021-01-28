@@ -1,6 +1,6 @@
 {
   "name": "@od2/hive-web-api",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Hive gRPC-Web definitions",
   "repository": {
     "type": "git",
